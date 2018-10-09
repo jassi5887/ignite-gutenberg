@@ -1,0 +1,17 @@
+<a target="_blank" (click)="openFile()" [ngClass]="bookLink ? 'book__viewable' : 'book__not-viewable'">
+  <div *ngIf="book?.formats['image/jpeg']">
+    <img [src]="book?.formats['image/jpeg']" alt="{{book?.authors[0]?.name}}">
+  </div>
+
+  <div class="book__noimage" *ngIf="!book?.formats['image/jpeg']">
+    no image
+  </div>
+
+  <div class="book__title">
+    {{ book?.title }}
+  </div>
+
+  <div class="book__author">
+    {{ book?.authors[0]?.name.split(',').reverse().join(' ') }}
+  </div>
+</a>

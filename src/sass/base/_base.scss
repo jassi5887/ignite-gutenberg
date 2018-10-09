@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+html {
+  font-size: 62.5%; // this is to make 1rem = 10px
+  font-family: 'Rubik', sans-serif;
+
+  @include respond(phone) {
+    font-size: 50%;
+  }
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: $color-primary;
+}

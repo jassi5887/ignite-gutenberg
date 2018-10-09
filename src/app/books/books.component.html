@@ -1,0 +1,33 @@
+<div class="books__header">
+  <a class="books__back" routerLink="/categories">
+    <img 
+        srcset="assets/drawable-xhdpi/ic_left_arrow.png 1x, 
+                assets/drawable-xxhdpi/ic_left_arrow.png 2x,
+                assets/drawable-xxxhdpi/ic_left_arrow.png 3x"
+        src="assets/drawable-hdpi/ic_left_arrow.png" 
+        alt="philosophy">
+  </a>
+  <div class="books__search">
+    <img 
+        class="books__search__glass"
+        srcset="assets/drawable-xhdpi/ic_search.png 1x, 
+                assets/drawable-xxhdpi/ic_search.png 2x,
+                assets/drawable-xxxhdpi/ic_search.png 3x"
+        src="assets/drawable-hdpi/ic_search.png" 
+        alt="philosophy">
+    <input [ngModel]="searchText" (ngModelChange)="onSearchTextChange($event)" class="" type="text" placeholder="search">
+  </div>
+</div>
+
+<app-loader [loaderMessage]="loaderMessage" *ngIf="showLoader" class="loader"></app-loader>
+
+<div class="books__show" [appScrollBottomDetect]="scrollToTop" (endReached)="onBottomReached()">
+  <div class="books__title">{{currentCategory}}</div>
+  <div class="books__item">
+    <app-book 
+    *ngFor="let book of booksList"
+    [book]="book"></app-book>
+  </div>
+
+  <div class="no-results" *ngIf="!booksList.length > 0">0 results found</div>
+</div>
